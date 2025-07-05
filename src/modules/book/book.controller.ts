@@ -21,16 +21,17 @@ const createBook = async (req: Request, res: Response) => {
 
 const getBooks = async (req: Request, res: Response) => {
     try {
-        const { genre, sort = "asc", limit = "10" } = req.query;
-        let filter: any = {};
-        if (genre) {
-            filter.genre = genre
-        };
-        const sortOrder = sort === "desc" ? -1 : 1;
+        // const { genre, sort = "asc", limit = "10" } = req.query;
+        // let filter: any = {};
+        // if (genre) {
+        //     filter.genre = genre
+        // };
+        // const sortOrder = sort === "desc" ? -1 : 1;
 
-        const data = await Book.find(filter)
-            .sort({ createdAt: sortOrder })
-            .limit(Number(limit))
+        // const data = await Book.find(filter)
+        //     .sort({ createdAt: sortOrder })
+        //     .limit(Number(limit))
+        const data = await Book.find();
         res.status(200).send({
             success: true,
             message: "Books retrieved successfully",
