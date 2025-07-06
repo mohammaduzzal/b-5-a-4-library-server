@@ -9,13 +9,19 @@ import route from "./modules/routes";
 const app = express();
 
 app.use(cors({
-  origin : "http://localhost:5173",
+  origin : ["http://localhost:5173","https://assignment-4-client-one.vercel.app"],
   credentials:true
 }));
 
 app.use(express.json());
 app.use(route)
 
+app.get("/", (req,res)=>{
+    res.send({
+        success :true,
+        message : "hey it is library management server"
+    })
+});
 
 app.listen(config.port, ()=>{
     console.log(`✔ express server is running on server ${config.port}`);
